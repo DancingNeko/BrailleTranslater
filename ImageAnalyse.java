@@ -67,7 +67,7 @@ public class ImageAnalyse extends JComponent{
 		if(displayAnalyse)
 		{
 			ArrayList<Details>dots = findDots();
-			draw rectangle here
+			//task 2: draw rectangle here
 		}
 	}
 	
@@ -89,7 +89,7 @@ public class ImageAnalyse extends JComponent{
 		int yMax = -100;
 		int yMin = Integer.MAX_VALUE;
 		return new int[]{xMin,yMin,xMax,yMax};
-	}task 1
+	}//task 1
 	
 	public boolean inCircle(int x1, int y1, int x2, int y2)
 	{
@@ -153,10 +153,15 @@ public class ImageAnalyse extends JComponent{
 	}
 	
 	public String analyseAndTranslate() {
-		String message;
+		String message = "";
 		ArrayList<Details>dots = this.findDots();
 		
 		return message;
+	}
+	
+	
+	public String translate(boolean[][] input) {
+		return "";
 	}
 }
 
