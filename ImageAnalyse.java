@@ -70,7 +70,7 @@ public class ImageAnalyse extends JComponent{
 			ArrayList<Details>dots = findDots();
 			//task 2 by hamza
 			for(Details dot:dots) {
-				g.drawRect(dot.xMin, dot.yMin, dot.xMax-dot.xMin, dot.yMax-dot.yMin);
+				g.fillOval(dot.xMin,dot.yMin , 5, 5);
 			}
 		}
 	}
@@ -86,205 +86,53 @@ public class ImageAnalyse extends JComponent{
 	}
 	
 	
-	public int[] getBound(int i, int j)
+	public int[] getBound(int x, int y)
 	{
-		int xMax = -100;
-		int xMin = Integer.MAX_VALUE;
-		int yMax = -100;
-		int yMin = Integer.MAX_VALUE;
+		int xMax = x;
+		int xMin = x;
+		int yMax = y;
+		int yMin = y;
 		//write you code here:
-
-         int X= Integer.MAX_VALUE;
-         int Y= Integer.MAX_VALUE;
-
-         int xmax2=0;
-         int xmax4=0;
-         int xmax6=0;
-         int xmax7=0;
-         int xmin1=0;
-         int xmin3=0;
-         int xmin5=0;
-         int xmin8=0;
-         int ymin1=0;
-         int ymin2=0;
-         int ymin5=0;
-         int ymin6=0;
-         int ymax3=0;
-         int ymax4=0;
-         int ymax7=0;
-         int ymax8=0;
-         for(i=0;i<=X;i++  )
-         {
-             for(j=0;j<=Y;  )
-             {
-                 if(mask[i][j]==0)
-                 {
-                 j++;
-                 continue;
-             }
-         else
-         {
-             int ci1=i;
-             int cj1=j;
-              while ( mask[ci1][cj1] != 0)
-              {
-                  --ci1;
-                  if( mask[ci1][cj1] != 0  )
-                  continue;
-                  else
-                  {
-                     cj1--;
-                     while( cj1!=-1 || mask[ci1][cj1]!=0 || ci1!=-1 )
-                     cj1--;
-                     if( cj1==-1 )
-                     cj1++;
-                     if( ci1==-1 )
-                     ci1++;
-                      xmin1=ci1;
-                      ymin1=cj1;
-                     }
-                 }
-                     int ci2=i;
-                     int cj2=j;
-
-              while ( mask[ci2][cj2] != 0)
-              {
-                  ++ci2;
-                  if( mask[ci2][cj2] != 0)
-                  continue;
-                  else
-                  {
-                     cj2--;
-                     while( cj2!=-1 || mask[ci2][cj2]!=0)
-                     j--;
-                     if( cj2==-1 )
-                     cj2++;
-                      xmax2=ci2;
-                      ymin2=cj2;
-                     }
-                 }
-                 int ci3=i;
-                 int cj3=j;
-                 while ( mask[ci3][cj3] != 0)
-              {
-                  ++cj3;
-                  if( mask[ci3][cj3] != 0)
-                  continue;
-                  else
-                  {
-                     ci3--;
-                     while( ci3!=-1 || mask[ci3][cj3]!=0)
-                     ci3--;
-                     if( ci3==-1 )
-                     ci3++;
-                      xmin3=ci3;
-                      ymax3=cj3;
-                     }
-                 }
-                 int ci4=i;
-                 int cj4=j;
-                 while ( mask[ci4][cj4] != 0)
-              {
-                  ++cj4;
-                  if( mask[ci4][cj4] != 0)
-                  continue;
-                  else
-                  {
-                     ci4++;
-                     while(  mask[ci4][cj4]!=0)
-                     ci4++;
-                     if( ci4==-1 )
-                     ci4++;
-                      xmax4=ci4;
-                      ymax4=cj4;
-                     }
-                 }
-                 int ci5=i;
-                 int cj5=j;
-                 while ( mask[ci5][cj5] != 0)
-              {
-                  --cj5;
-                  if( mask[ci5][cj5] != 0)
-                  continue;
-                  else
-                  {
-                     ci5--;
-                     while( ci5!=-1 || mask[ci5][cj5]!=0 ||cj5!=-1)
-                     ci5--;
-                     if( ci5==-1 )
-                     ci5++;
-                     if( cj5==-1 )
-                     cj5++;
-                      xmin5=ci5;
-                      ymin5=cj5;
-                     }
-                 }
-                 int ci6=i;
-                 int cj6=j;
-                 while ( mask[ci6][cj6] != 0)
-              {
-                  --cj6;
-                  if( mask[ci6][cj6] != 0)
-                  continue;
-                  else
-                  {
-                     ci6++;
-                     while( mask[ci6][cj6]!=0 || cj5!=-1)
-                     if( cj6==-1 )
-                     cj6++;
-                      xmax6=ci6;
-                      ymin6=cj6;
-                     }
-                 }
-                 int ci7=i;
-                 int cj7=j;
-                 while ( mask[ci7][cj7] != 0)
-              {
-                  ++ci7;
-                  if( mask[ci7][cj7] != 0)
-                  continue;
-                  else
-                  {
-                     cj7++;
-                     while( mask[ci7][cj7]!=0)
-                     if( ci7==-1 )
-                     ci7++;
-                      xmax7=ci7;
-                      ymax7=cj7;
-                     }
-                 }
-                 int ci8=i;
-             int cj8=j;
-              while ( mask[ci8][cj8] != 0)
-              {
-                  --ci8;
-                  if( mask[ci8][cj8] != 0)
-                  continue;
-                  else
-                  {
-                     cj8++;
-                     while( mask[ci8][cj8]!=0 || ci8!=-1)
-                     cj8--;
-                     if( ci8==-1 )
-                     ci8++;
-                      xmin8=ci8;
-                      ymax8=cj8;
-                     }
-                 }
-
-         }
-             }
-         }
-         xMax= Math.max(Math.max(xmax2, xmax4), Math.max(xmax6, xmax7));
-         xMin= Math.min(Math.max(xmin1, xmin3), Math.min(xmin5, xmin8));
-         yMin= Math.min(Math.min(ymin6, ymin5), Math.min(ymin2, ymin1));
-         yMax= Math.max(Math.max(ymax8, ymax7), Math.max(ymax3, ymax4));
+		/*boolean up = true;
+		boolean down = true;
+		boolean left = true;
+		boolean right = true;
+		System.out.print(Arrays.toString(mask[0]));
+		while(up || down || left || right) {
+			up = false;
+			down = false;
+			left = false;
+			right = false;
+			for(int i = xMin; i <= xMax; i++) {
+				if(mask[i][yMin] == 1)
+					up = true;
+			}
+			for(int i = xMin; i <= xMax; i++) {
+				if(mask[i][yMax] == 1)
+					down = true;
+			}
+			for(int i = yMin; i <= yMax; i++) {
+				if(mask[xMin][i] == 1)
+					left = true;
+			}		
+			for(int i = yMin; i <= yMax; i++) {
+				if(mask[xMax][i] == 1)
+					right = true;
+			}
+			if(up && xMin > 0)
+				xMin --;
+			if(down && xMax < mask.length-1)
+				xMax ++;
+			if(left && yMin > 0)
+				yMin --;
+			if(right && yMax < mask[0].length-1)
+				yMax ++;
+				
+		}
 		
-		
-		
-		
-		return new int[]{xMin,yMin,xMax,yMax};
-	}//task 1 by aditya
+		return new int[]{xMin,yMin,xMax,yMax};*/
+		return new int[] {x,y,x,y};
+	}
 	
 	public boolean inCircle(int x1, int y1, int x2, int y2)
 	{
@@ -310,9 +158,11 @@ public class ImageAnalyse extends JComponent{
 				if(maskCopy[i][j] == 1)
 				{
 					Details dot = new Details(getBound(i, j));
-					for(int k = dot.xMin; k <= dot.xMax; k++)
-						for(int l = dot.yMin; l <= dot.yMax; l++)
+					for(int k = dot.xMin - 20; k <= dot.xMax + 30; k++)
+						for(int l = dot.yMin - 20; l <= dot.yMax + 20; l++)
 						{
+							if(k >= mask.length || l >= mask[0].length || k < 0 || l < 0)
+								continue;
 							maskCopy[k][l] = 0;
 						}
 					info.add(dot);
@@ -364,13 +214,82 @@ public class ImageAnalyse extends JComponent{
 		}
 		Collections.sort(xChart);
 		Collections.sort(yChart);
-		
+		for(int i = 0; i < xChart.size(); i++) {
+			int close = closest(xChart.get(i),xChart);
+			if(Math.abs(close - xChart.get(i)) < 10)
+			{
+				xChart.remove(i);
+				i--;
+			}
+		}
+		for(int i = 0; i < yChart.size(); i++) {
+			int close = closest(yChart.get(i),yChart);
+			if(Math.abs(close - yChart.get(i)) < 10) {
+				yChart.remove(i);
+				i--;
+				}
+		}
+		int[][]input = new int[xChart.size()][yChart.size()];
+		for(int[]arry:input) {
+			Arrays.fill(arry, 0);
+		}
+		for(Details dot:dots) {
+			int x = (dot.xMax + dot.xMin)/2;
+			int y = (dot.yMax + dot.yMin)/2;
+			int closeX = closest(x,xChart);
+			int closeY = closest(y,yChart);
+			int xIndex = xChart.indexOf(closeX);
+			int yIndex = yChart.indexOf(closeY);
+			if(xIndex == -1 || yIndex == -1)
+				return "";
+			input[xIndex][yIndex] = 1;
+		}
+			for(int j = 0 ; j < input[0].length; j++)
+			{
+				for(int i = 0; i < input.length; i++) {
+					System.out.print(input[i][j]);
+				}
+				System.out.print("\n");
+			}
+		this.translate(input);
 		return message;
 	}
 	
+	public int closest(int of, ArrayList<Integer> in) {
+	    int min = Integer.MAX_VALUE;
+	    int closest = of;
+
+	    for (int v : in) {
+	        final int diff = Math.abs(v - of);
+
+	        if (diff < min && diff != 0) {
+	            min = diff;
+	            closest = v;
+	        }
+	    }
+
+	    return closest;
+	}
 	
-	public String translate(boolean[][] input) {
-		return ""; //task 3
+	
+	public String translate(int[][] input) {
+		String message = "";
+		int[][] letters = {{1,0,0,0,0,0},{1,0,1,0,0,0},{1,1,0,0,0,0},{1,1,0,1,0,0},{1,0,0,1,0,0},{1,1,1,0,0,0},{1,1,1,1,0,0},{1,0,1,1,1,0,0},{0,1,1,0,0,0},{0,1,1,1,0,0},{1,0,0,0,1,0},{1,0,1,0,1,0},{1,1,0,0,1,0},{1,1,0,1,1,0},{1,0,0,1,1,0},{1,1,1,0,1,0},{1,1,1,1,1,0},{1,0,1,1,1,0},{0,1,1,0,1,0},{0,1,1,1,1,0},{1,0,0,0,1,1},{1,0,1,0,1,1},{0,1,1,1,0,1},{1,1,0,0,1,1},{1,1,0,1,1,1},{1,0,0,1,1,1}};
+		for(int i = 0; i < input.length-2; i += 3)
+			for(int j = 0; j < input[0].length-1; j += 2) {
+				int[] letter = {input[i][j],input[i][j+1],input[i+1][j],input[i+1][j+1],input[i+2][j],input[i+2][j+1]};
+				for(int k = 0; k < letters.length; k++) {
+					if(Arrays.equals(letters[k], letter)) {
+						message += Character.toString((char)(97+k));
+						break;
+					}
+					if(Arrays.equals(new int[]{0,0,1,1,0,1}, letter)) {
+						message += ".";
+						break;
+					}
+				}
+			}
+		return message;
 	}
 }
 
